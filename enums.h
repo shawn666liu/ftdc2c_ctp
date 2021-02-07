@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 10:46:05
+//// 2021-02-07 11:17:45
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -48,7 +48,6 @@ enum class EnumOnRspEvent
 	None,
 	OnRspUserLogin,
 	OnRspUserLogout,
-	OnRspQryMulticastInstrument,
 	OnRspError,
 	OnRspSubMarketData,
 	OnRspUnSubMarketData,

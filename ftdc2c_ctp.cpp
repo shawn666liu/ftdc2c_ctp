@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 10:46:07
+//// 2021-02-07 11:17:45
 /////////////////////////////////////////////////////////////////////////
 
 #include "ftdc2c_ctp.h"
@@ -78,10 +78,6 @@ FTDC2C_API int MYDECL MdReqUserLogin(void* pApi, CThostFtdcReqUserLoginField* pR
 
 FTDC2C_API int MYDECL MdReqUserLogout(void* pApi, CThostFtdcUserLogoutField* pUserLogout, int nRequestID) {
 	return (static_cast<Quoter*>(pApi))->RawApi->ReqUserLogout(pUserLogout, nRequestID);
-}
-
-FTDC2C_API int MYDECL MdReqQryMulticastInstrument(void* pApi, CThostFtdcQryMulticastInstrumentField* pQryMulticastInstrument, int nRequestID) {
-	return (static_cast<Quoter*>(pApi))->RawApi->ReqQryMulticastInstrument(pQryMulticastInstrument, nRequestID);
 }
 
 FTDC2C_API void MYDECL TdDestroyApi(void* pApi) {

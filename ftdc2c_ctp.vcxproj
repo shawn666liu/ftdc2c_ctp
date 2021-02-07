@@ -174,7 +174,7 @@
     <ClCompile Include="ftdc2c_ctp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="v6.3.19_P1_20200106.txt" />
+    <Text Include="6.3.15_20190220.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

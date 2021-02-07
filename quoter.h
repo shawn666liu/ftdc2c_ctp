@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 10:46:07
+//// 2021-02-07 11:17:45
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -45,9 +45,6 @@ public:
 	};
 	void OnRspUserLogout(CThostFtdcUserLogoutField* pUserLogout, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
 		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspUserLogout), pUserLogout, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRspQryMulticastInstrument(CThostFtdcMulticastInstrumentField* pMulticastInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspQryMulticastInstrument), pMulticastInstrument, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspError(CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
 		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspError), nullptr, pRspInfo, nRequestID, bIsLast);

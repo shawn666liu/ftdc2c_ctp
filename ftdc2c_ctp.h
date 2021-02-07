@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 10:46:07
+//// 2021-02-07 11:17:45
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -51,7 +51,6 @@ extern "C" {
 	FTDC2C_API int MYDECL MdUnSubscribeForQuoteRsp(void* pApi, char* ppInstrumentID[], int nCount);
 	FTDC2C_API int MYDECL MdReqUserLogin(void* pApi, CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID);
 	FTDC2C_API int MYDECL MdReqUserLogout(void* pApi, CThostFtdcUserLogoutField* pUserLogout, int nRequestID);
-	FTDC2C_API int MYDECL MdReqQryMulticastInstrument(void* pApi, CThostFtdcQryMulticastInstrumentField* pQryMulticastInstrument, int nRequestID);
 
 	FTDC2C_API void MYDECL TdDestroyApi(void* pApi);
 	FTDC2C_API void MYDECL TdRegisterCallback(void* pApi, CbOnErrRtnEvent c1, CbOnFrontEvent c2, CbOnRspEvent c3, CbOnRtnEvent c4, void* pObject);
