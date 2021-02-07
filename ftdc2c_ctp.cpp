@@ -1,19 +1,24 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// Generated at 2016/8/14 13:47:00
+//// 2021-02-07 09:55:51
 /////////////////////////////////////////////////////////////////////////
 
 #include "ftdc2c_ctp.h"
 #include "quoter.h"
 #include "trader.h"
+#include <DataCollect.h>
+
+FTDC2C_API int MYDECL CTPGetSystemInfo(char pSystemInfo[], int& nLen) {
+	return CTP_GetSystemInfo(pSystemInfo, nLen);
+}
 
 FTDC2C_API void MYDECL MdDestroyApi(void* pApi) {
 	delete static_cast<Quoter*>(pApi);
 }
 
 FTDC2C_API void MYDECL MdRegisterCallback(void* pApi, CbOnFrontEvent c1, CbOnRspEvent c2, CbOnRtnEvent c3, void* pObject) {
-	Quoter *p = static_cast<Quoter*>(pApi);
+	Quoter* p = static_cast<Quoter*>(pApi);
 	p->mOnFrontEvent = c1;
 	p->mOnRspEvent = c2;
 	p->mOnRtnEvent = c3;
@@ -75,12 +80,16 @@ FTDC2C_API int MYDECL MdReqUserLogout(void* pApi, CThostFtdcUserLogoutField* pUs
 	return (static_cast<Quoter*>(pApi))->RawApi->ReqUserLogout(pUserLogout, nRequestID);
 }
 
+FTDC2C_API int MYDECL MdReqQryMulticastInstrument(void* pApi, CThostFtdcQryMulticastInstrumentField* pQryMulticastInstrument, int nRequestID) {
+	return (static_cast<Quoter*>(pApi))->RawApi->ReqQryMulticastInstrument(pQryMulticastInstrument, nRequestID);
+}
+
 FTDC2C_API void MYDECL TdDestroyApi(void* pApi) {
 	delete static_cast<Trader*>(pApi);
 }
 
 FTDC2C_API void MYDECL TdRegisterCallback(void* pApi, CbOnErrRtnEvent c1, CbOnFrontEvent c2, CbOnRspEvent c3, CbOnRtnEvent c4, void* pObject) {
-	Trader *p = static_cast<Trader*>(pApi);
+	Trader* p = static_cast<Trader*>(pApi);
 	p->mOnErrRtnEvent = c1;
 	p->mOnFrontEvent = c2;
 	p->mOnRspEvent = c3;
@@ -131,6 +140,14 @@ FTDC2C_API int MYDECL TdReqAuthenticate(void* pApi, CThostFtdcReqAuthenticateFie
 	return (static_cast<Trader*>(pApi))->RawApi->ReqAuthenticate(pReqAuthenticateField, nRequestID);
 }
 
+FTDC2C_API int MYDECL TdRegisterUserSystemInfo(void* pApi, CThostFtdcUserSystemInfoField* pUserSystemInfo) {
+	return (static_cast<Trader*>(pApi))->RawApi->RegisterUserSystemInfo(pUserSystemInfo);
+}
+
+FTDC2C_API int MYDECL TdSubmitUserSystemInfo(void* pApi, CThostFtdcUserSystemInfoField* pUserSystemInfo) {
+	return (static_cast<Trader*>(pApi))->RawApi->SubmitUserSystemInfo(pUserSystemInfo);
+}
+
 FTDC2C_API int MYDECL TdReqUserLogin(void* pApi, CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID) {
 	return (static_cast<Trader*>(pApi))->RawApi->ReqUserLogin(pReqUserLoginField, nRequestID);
 }
@@ -145,6 +162,30 @@ FTDC2C_API int MYDECL TdReqUserPasswordUpdate(void* pApi, CThostFtdcUserPassword
 
 FTDC2C_API int MYDECL TdReqTradingAccountPasswordUpdate(void* pApi, CThostFtdcTradingAccountPasswordUpdateField* pTradingAccountPasswordUpdate, int nRequestID) {
 	return (static_cast<Trader*>(pApi))->RawApi->ReqTradingAccountPasswordUpdate(pTradingAccountPasswordUpdate, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqUserAuthMethod(void* pApi, CThostFtdcReqUserAuthMethodField* pReqUserAuthMethod, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqUserAuthMethod(pReqUserAuthMethod, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqGenUserCaptcha(void* pApi, CThostFtdcReqGenUserCaptchaField* pReqGenUserCaptcha, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqGenUserCaptcha(pReqGenUserCaptcha, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqGenUserText(void* pApi, CThostFtdcReqGenUserTextField* pReqGenUserText, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqGenUserText(pReqGenUserText, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqUserLoginWithCaptcha(void* pApi, CThostFtdcReqUserLoginWithCaptchaField* pReqUserLoginWithCaptcha, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqUserLoginWithCaptcha(pReqUserLoginWithCaptcha, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqUserLoginWithText(void* pApi, CThostFtdcReqUserLoginWithTextField* pReqUserLoginWithText, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqUserLoginWithText(pReqUserLoginWithText, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqUserLoginWithOTP(void* pApi, CThostFtdcReqUserLoginWithOTPField* pReqUserLoginWithOTP, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqUserLoginWithOTP(pReqUserLoginWithOTP, nRequestID);
 }
 
 FTDC2C_API int MYDECL TdReqOrderInsert(void* pApi, CThostFtdcInputOrderField* pInputOrder, int nRequestID) {
@@ -163,8 +204,8 @@ FTDC2C_API int MYDECL TdReqOrderAction(void* pApi, CThostFtdcInputOrderActionFie
 	return (static_cast<Trader*>(pApi))->RawApi->ReqOrderAction(pInputOrderAction, nRequestID);
 }
 
-FTDC2C_API int MYDECL TdReqQueryMaxOrderVolume(void* pApi, CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, int nRequestID) {
-	return (static_cast<Trader*>(pApi))->RawApi->ReqQueryMaxOrderVolume(pQueryMaxOrderVolume, nRequestID);
+FTDC2C_API int MYDECL TdReqQryMaxOrderVolume(void* pApi, CThostFtdcQryMaxOrderVolumeField* pQryMaxOrderVolume, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQryMaxOrderVolume(pQryMaxOrderVolume, nRequestID);
 }
 
 FTDC2C_API int MYDECL TdReqSettlementInfoConfirm(void* pApi, CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, int nRequestID) {
@@ -201,6 +242,14 @@ FTDC2C_API int MYDECL TdReqQuoteAction(void* pApi, CThostFtdcInputQuoteActionFie
 
 FTDC2C_API int MYDECL TdReqBatchOrderAction(void* pApi, CThostFtdcInputBatchOrderActionField* pInputBatchOrderAction, int nRequestID) {
 	return (static_cast<Trader*>(pApi))->RawApi->ReqBatchOrderAction(pInputBatchOrderAction, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqOptionSelfCloseInsert(void* pApi, CThostFtdcInputOptionSelfCloseField* pInputOptionSelfClose, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqOptionSelfCloseInsert(pInputOptionSelfClose, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqOptionSelfCloseAction(void* pApi, CThostFtdcInputOptionSelfCloseActionField* pInputOptionSelfCloseAction, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqOptionSelfCloseAction(pInputOptionSelfCloseAction, nRequestID);
 }
 
 FTDC2C_API int MYDECL TdReqCombActionInsert(void* pApi, CThostFtdcInputCombActionField* pInputCombAction, int nRequestID) {
@@ -327,6 +376,18 @@ FTDC2C_API int MYDECL TdReqQryInstrumentOrderCommRate(void* pApi, CThostFtdcQryI
 	return (static_cast<Trader*>(pApi))->RawApi->ReqQryInstrumentOrderCommRate(pQryInstrumentOrderCommRate, nRequestID);
 }
 
+FTDC2C_API int MYDECL TdReqQrySecAgentTradingAccount(void* pApi, CThostFtdcQryTradingAccountField* pQryTradingAccount, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQrySecAgentTradingAccount(pQryTradingAccount, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqQrySecAgentCheckMode(void* pApi, CThostFtdcQrySecAgentCheckModeField* pQrySecAgentCheckMode, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQrySecAgentCheckMode(pQrySecAgentCheckMode, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqQrySecAgentTradeInfo(void* pApi, CThostFtdcQrySecAgentTradeInfoField* pQrySecAgentTradeInfo, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQrySecAgentTradeInfo(pQrySecAgentTradeInfo, nRequestID);
+}
+
 FTDC2C_API int MYDECL TdReqQryOptionInstrTradeCost(void* pApi, CThostFtdcQryOptionInstrTradeCostField* pQryOptionInstrTradeCost, int nRequestID) {
 	return (static_cast<Trader*>(pApi))->RawApi->ReqQryOptionInstrTradeCost(pQryOptionInstrTradeCost, nRequestID);
 }
@@ -345,6 +406,14 @@ FTDC2C_API int MYDECL TdReqQryForQuote(void* pApi, CThostFtdcQryForQuoteField* p
 
 FTDC2C_API int MYDECL TdReqQryQuote(void* pApi, CThostFtdcQryQuoteField* pQryQuote, int nRequestID) {
 	return (static_cast<Trader*>(pApi))->RawApi->ReqQryQuote(pQryQuote, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqQryOptionSelfClose(void* pApi, CThostFtdcQryOptionSelfCloseField* pQryOptionSelfClose, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQryOptionSelfClose(pQryOptionSelfClose, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqQryInvestUnit(void* pApi, CThostFtdcQryInvestUnitField* pQryInvestUnit, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQryInvestUnit(pQryInvestUnit, nRequestID);
 }
 
 FTDC2C_API int MYDECL TdReqQryCombInstrumentGuard(void* pApi, CThostFtdcQryCombInstrumentGuardField* pQryCombInstrumentGuard, int nRequestID) {
@@ -401,5 +470,13 @@ FTDC2C_API int MYDECL TdReqFromFutureToBankByFuture(void* pApi, CThostFtdcReqTra
 
 FTDC2C_API int MYDECL TdReqQueryBankAccountMoneyByFuture(void* pApi, CThostFtdcReqQueryAccountField* pReqQueryAccount, int nRequestID) {
 	return (static_cast<Trader*>(pApi))->RawApi->ReqQueryBankAccountMoneyByFuture(pReqQueryAccount, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqQryClassifiedInstrument(void* pApi, CThostFtdcQryClassifiedInstrumentField* pQryClassifiedInstrument, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQryClassifiedInstrument(pQryClassifiedInstrument, nRequestID);
+}
+
+FTDC2C_API int MYDECL TdReqQryCombPromotionParam(void* pApi, CThostFtdcQryCombPromotionParamField* pQryCombPromotionParam, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQryCombPromotionParam(pQryCombPromotionParam, nRequestID);
 }
 

@@ -1,0 +1,14 @@
+API来源：上期技术官方网站
+
+http://www.sfit.com.cn/5_2_DocumentDown_2.htm
+
+tradeapi v6.5.1_20200908
+http://www.sfit.com.cn/DocumentDown/api_3/5_2_2/6.5.1API-for-server.zip
+
+
+请参看官方文档:
+v6.5.1tradeapi补充变更说明20210122.txt
+v6.5.1_20200908tradeapi.txt
+
+http://www.sfit.com.cn/DocumentDown/api_3/5_2_2/6.5.1_APIInterfacedescription.zip
+http://www.sfit.com.cn/DocumentDown/api_3/5_2_2/futureapi_6.3.15_demo.rar

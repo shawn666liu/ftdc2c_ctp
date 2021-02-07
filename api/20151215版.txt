@@ -1,5 +1,0 @@
-API来源：上期技术官方网站
-
-http://www.sfit.com.cn/5_2_DocumentDown.htm
-
-tradeapi	(2015-12-15)	兼容CTP系统6.3.6版本补丁的API(V6.3.6)

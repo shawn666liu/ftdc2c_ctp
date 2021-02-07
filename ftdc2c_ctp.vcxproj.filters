@@ -1,22 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="ctp2c.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
+    <ClInclude Include="enums.h" />
+    <ClInclude Include="quoter.h" />
+    <ClInclude Include="trader.h" />
+    <ClInclude Include="ftdc2c_ctp.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ctp2c.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="enums.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="quoter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="trader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
+    <ClCompile Include="ftdc2c_ctp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="v6.5.1_20200908.txt" />
   </ItemGroup>
 </Project>

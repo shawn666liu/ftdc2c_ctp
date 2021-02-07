@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// Generated at 2016/8/14 13:47:00
+//// 2021-02-07 09:55:43
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -20,6 +20,8 @@ enum class EnumOnErrRtnEvent
 	OnErrRtnQuoteInsert,
 	OnErrRtnQuoteAction,
 	OnErrRtnBatchOrderAction,
+	OnErrRtnOptionSelfCloseInsert,
+	OnErrRtnOptionSelfCloseAction,
 	OnErrRtnCombActionInsert,
 	OnErrRtnBankToFutureByFuture,
 	OnErrRtnFutureToBankByFuture,
@@ -46,6 +48,7 @@ enum class EnumOnRspEvent
 	None,
 	OnRspUserLogin,
 	OnRspUserLogout,
+	OnRspQryMulticastInstrument,
 	OnRspError,
 	OnRspSubMarketData,
 	OnRspUnSubMarketData,
@@ -54,11 +57,14 @@ enum class EnumOnRspEvent
 	OnRspAuthenticate,
 	OnRspUserPasswordUpdate,
 	OnRspTradingAccountPasswordUpdate,
+	OnRspUserAuthMethod,
+	OnRspGenUserCaptcha,
+	OnRspGenUserText,
 	OnRspOrderInsert,
 	OnRspParkedOrderInsert,
 	OnRspParkedOrderAction,
 	OnRspOrderAction,
-	OnRspQueryMaxOrderVolume,
+	OnRspQryMaxOrderVolume,
 	OnRspSettlementInfoConfirm,
 	OnRspRemoveParkedOrder,
 	OnRspRemoveParkedOrderAction,
@@ -68,6 +74,8 @@ enum class EnumOnRspEvent
 	OnRspQuoteInsert,
 	OnRspQuoteAction,
 	OnRspBatchOrderAction,
+	OnRspOptionSelfCloseInsert,
+	OnRspOptionSelfCloseAction,
 	OnRspCombActionInsert,
 	OnRspQryOrder,
 	OnRspQryTrade,
@@ -99,11 +107,16 @@ enum class EnumOnRspEvent
 	OnRspQryMMInstrumentCommissionRate,
 	OnRspQryMMOptionInstrCommRate,
 	OnRspQryInstrumentOrderCommRate,
+	OnRspQrySecAgentTradingAccount,
+	OnRspQrySecAgentCheckMode,
+	OnRspQrySecAgentTradeInfo,
 	OnRspQryOptionInstrTradeCost,
 	OnRspQryOptionInstrCommRate,
 	OnRspQryExecOrder,
 	OnRspQryForQuote,
 	OnRspQryQuote,
+	OnRspQryOptionSelfClose,
+	OnRspQryInvestUnit,
 	OnRspQryCombInstrumentGuard,
 	OnRspQryCombAction,
 	OnRspQryTransferSerial,
@@ -118,6 +131,8 @@ enum class EnumOnRspEvent
 	OnRspFromBankToFutureByFuture,
 	OnRspFromFutureToBankByFuture,
 	OnRspQueryBankAccountMoneyByFuture,
+	OnRspQryClassifiedInstrument,
+	OnRspQryCombPromotionParam,
 };
 
 /// <summary>
@@ -137,6 +152,7 @@ enum class EnumOnRtnEvent
 	OnRtnExecOrder,
 	OnRtnQuote,
 	OnRtnCFMMCTradingAccountToken,
+	OnRtnOptionSelfClose,
 	OnRtnCombAction,
 	OnRtnFromBankToFutureByBank,
 	OnRtnFromFutureToBankByBank,

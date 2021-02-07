@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// Generated at 2016/8/14 13:47:00
+//// 2021-02-07 09:55:51
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -25,47 +25,50 @@ public:
 
 
 	virtual ~Quoter() {
-		if (RawApi){
+		if (RawApi) {
 			RawApi->RegisterSpi(nullptr);
 			RawApi->Release();
 			RawApi = nullptr;
 		}
 	};
 
-	virtual void OnFrontConnected() {
-		mOnFrontEvent(pObject, (int)EnumOnFrontEvent::OnFrontConnected, 0);
+	void OnFrontConnected() override {
+		mOnFrontEvent(pObject, int(EnumOnFrontEvent::OnFrontConnected), 0);
 	};
-	virtual void OnFrontDisconnected(int nReason) {
-		mOnFrontEvent(pObject, (int)EnumOnFrontEvent::OnFrontDisconnected, nReason);
+	void OnFrontDisconnected(int nReason) override {
+		mOnFrontEvent(pObject, int(EnumOnFrontEvent::OnFrontDisconnected), nReason);
 	};
-	virtual void OnHeartBeatWarning(int nTimeLapse) {
+	void OnHeartBeatWarning(int nTimeLapse) override {
 	};
-	virtual void OnRspUserLogin(CThostFtdcRspUserLoginField* pRspUserLogin, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
-		mOnRspEvent(pObject, (int)EnumOnRspEvent::OnRspUserLogin, pRspUserLogin, pRspInfo, nRequestID, bIsLast);
+	void OnRspUserLogin(CThostFtdcRspUserLoginField* pRspUserLogin, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspUserLogin), pRspUserLogin, pRspInfo, nRequestID, bIsLast);
 	};
-	virtual void OnRspUserLogout(CThostFtdcUserLogoutField* pUserLogout, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
-		mOnRspEvent(pObject, (int)EnumOnRspEvent::OnRspUserLogout, pUserLogout, pRspInfo, nRequestID, bIsLast);
+	void OnRspUserLogout(CThostFtdcUserLogoutField* pUserLogout, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspUserLogout), pUserLogout, pRspInfo, nRequestID, bIsLast);
 	};
-	virtual void OnRspError(CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
-		mOnRspEvent(pObject, (int)EnumOnRspEvent::OnRspError, nullptr, pRspInfo, nRequestID, bIsLast);
+	void OnRspQryMulticastInstrument(CThostFtdcMulticastInstrumentField* pMulticastInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspQryMulticastInstrument), pMulticastInstrument, pRspInfo, nRequestID, bIsLast);
 	};
-	virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
-		mOnRspEvent(pObject, (int)EnumOnRspEvent::OnRspSubMarketData, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
+	void OnRspError(CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspError), nullptr, pRspInfo, nRequestID, bIsLast);
 	};
-	virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
-		mOnRspEvent(pObject, (int)EnumOnRspEvent::OnRspUnSubMarketData, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
+	void OnRspSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspSubMarketData), pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
-	virtual void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
-		mOnRspEvent(pObject, (int)EnumOnRspEvent::OnRspSubForQuoteRsp, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
+	void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspUnSubMarketData), pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
-	virtual void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
-		mOnRspEvent(pObject, (int)EnumOnRspEvent::OnRspUnSubForQuoteRsp, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
+	void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspSubForQuoteRsp), pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
-	virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField* pDepthMarketData) {
-		mOnRtnEvent(pObject, (int)EnumOnRtnEvent::OnRtnDepthMarketData, pDepthMarketData);
+	void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspUnSubForQuoteRsp), pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
-	virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField* pForQuoteRsp) {
-		mOnRtnEvent(pObject, (int)EnumOnRtnEvent::OnRtnForQuoteRsp, pForQuoteRsp);
+	void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField* pDepthMarketData) override {
+		mOnRtnEvent(pObject, int(EnumOnRtnEvent::OnRtnDepthMarketData), pDepthMarketData);
+	};
+	void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField* pForQuoteRsp) override {
+		mOnRtnEvent(pObject, int(EnumOnRtnEvent::OnRtnForQuoteRsp), pForQuoteRsp);
 	};
 
 }; // end of class

@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// Generated at 2016/8/14 13:47:00
+//// 2021-02-07 09:55:51
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -29,10 +29,12 @@
 extern "C" {
 #endif
 
-	typedef void(MYDECL *CbOnErrRtnEvent)(void* pObject, int type, void* pParam, void* pRspInfo);
-	typedef void(MYDECL *CbOnFrontEvent)(void* pObject, int type, int Reason);
-	typedef void(MYDECL *CbOnRspEvent)(void* pObject, int type, void* pParam, void* pRspInfo, int nRequestID, bool bIsLast);
-	typedef void(MYDECL *CbOnRtnEvent)(void* pObject, int type, void* pParam);
+	typedef void(MYDECL* CbOnErrRtnEvent)(void* pObject, int type, void* pParam, void* pRspInfo);
+	typedef void(MYDECL* CbOnFrontEvent)(void* pObject, int type, int Reason);
+	typedef void(MYDECL* CbOnRspEvent)(void* pObject, int type, void* pParam, void* pRspInfo, int nRequestID, bool bIsLast);
+	typedef void(MYDECL* CbOnRtnEvent)(void* pObject, int type, void* pParam);
+
+	FTDC2C_API int MYDECL CTPGetSystemInfo(char pSystemInfo[], int& nLen);
 
 	FTDC2C_API void MYDECL MdDestroyApi(void* pApi);
 	FTDC2C_API void MYDECL MdRegisterCallback(void* pApi, CbOnFrontEvent c1, CbOnRspEvent c2, CbOnRtnEvent c3, void* pObject);
@@ -49,6 +51,7 @@ extern "C" {
 	FTDC2C_API int MYDECL MdUnSubscribeForQuoteRsp(void* pApi, char* ppInstrumentID[], int nCount);
 	FTDC2C_API int MYDECL MdReqUserLogin(void* pApi, CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID);
 	FTDC2C_API int MYDECL MdReqUserLogout(void* pApi, CThostFtdcUserLogoutField* pUserLogout, int nRequestID);
+	FTDC2C_API int MYDECL MdReqQryMulticastInstrument(void* pApi, CThostFtdcQryMulticastInstrumentField* pQryMulticastInstrument, int nRequestID);
 
 	FTDC2C_API void MYDECL TdDestroyApi(void* pApi);
 	FTDC2C_API void MYDECL TdRegisterCallback(void* pApi, CbOnErrRtnEvent c1, CbOnFrontEvent c2, CbOnRspEvent c3, CbOnRtnEvent c4, void* pObject);
@@ -62,15 +65,23 @@ extern "C" {
 	FTDC2C_API void MYDECL TdSubscribePrivateTopic(void* pApi, THOST_TE_RESUME_TYPE nResumeType);
 	FTDC2C_API void MYDECL TdSubscribePublicTopic(void* pApi, THOST_TE_RESUME_TYPE nResumeType);
 	FTDC2C_API int MYDECL TdReqAuthenticate(void* pApi, CThostFtdcReqAuthenticateField* pReqAuthenticateField, int nRequestID);
+	FTDC2C_API int MYDECL TdRegisterUserSystemInfo(void* pApi, CThostFtdcUserSystemInfoField* pUserSystemInfo);
+	FTDC2C_API int MYDECL TdSubmitUserSystemInfo(void* pApi, CThostFtdcUserSystemInfoField* pUserSystemInfo);
 	FTDC2C_API int MYDECL TdReqUserLogin(void* pApi, CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID);
 	FTDC2C_API int MYDECL TdReqUserLogout(void* pApi, CThostFtdcUserLogoutField* pUserLogout, int nRequestID);
 	FTDC2C_API int MYDECL TdReqUserPasswordUpdate(void* pApi, CThostFtdcUserPasswordUpdateField* pUserPasswordUpdate, int nRequestID);
 	FTDC2C_API int MYDECL TdReqTradingAccountPasswordUpdate(void* pApi, CThostFtdcTradingAccountPasswordUpdateField* pTradingAccountPasswordUpdate, int nRequestID);
+	FTDC2C_API int MYDECL TdReqUserAuthMethod(void* pApi, CThostFtdcReqUserAuthMethodField* pReqUserAuthMethod, int nRequestID);
+	FTDC2C_API int MYDECL TdReqGenUserCaptcha(void* pApi, CThostFtdcReqGenUserCaptchaField* pReqGenUserCaptcha, int nRequestID);
+	FTDC2C_API int MYDECL TdReqGenUserText(void* pApi, CThostFtdcReqGenUserTextField* pReqGenUserText, int nRequestID);
+	FTDC2C_API int MYDECL TdReqUserLoginWithCaptcha(void* pApi, CThostFtdcReqUserLoginWithCaptchaField* pReqUserLoginWithCaptcha, int nRequestID);
+	FTDC2C_API int MYDECL TdReqUserLoginWithText(void* pApi, CThostFtdcReqUserLoginWithTextField* pReqUserLoginWithText, int nRequestID);
+	FTDC2C_API int MYDECL TdReqUserLoginWithOTP(void* pApi, CThostFtdcReqUserLoginWithOTPField* pReqUserLoginWithOTP, int nRequestID);
 	FTDC2C_API int MYDECL TdReqOrderInsert(void* pApi, CThostFtdcInputOrderField* pInputOrder, int nRequestID);
 	FTDC2C_API int MYDECL TdReqParkedOrderInsert(void* pApi, CThostFtdcParkedOrderField* pParkedOrder, int nRequestID);
 	FTDC2C_API int MYDECL TdReqParkedOrderAction(void* pApi, CThostFtdcParkedOrderActionField* pParkedOrderAction, int nRequestID);
 	FTDC2C_API int MYDECL TdReqOrderAction(void* pApi, CThostFtdcInputOrderActionField* pInputOrderAction, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQueryMaxOrderVolume(void* pApi, CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQryMaxOrderVolume(void* pApi, CThostFtdcQryMaxOrderVolumeField* pQryMaxOrderVolume, int nRequestID);
 	FTDC2C_API int MYDECL TdReqSettlementInfoConfirm(void* pApi, CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, int nRequestID);
 	FTDC2C_API int MYDECL TdReqRemoveParkedOrder(void* pApi, CThostFtdcRemoveParkedOrderField* pRemoveParkedOrder, int nRequestID);
 	FTDC2C_API int MYDECL TdReqRemoveParkedOrderAction(void* pApi, CThostFtdcRemoveParkedOrderActionField* pRemoveParkedOrderAction, int nRequestID);
@@ -80,6 +91,8 @@ extern "C" {
 	FTDC2C_API int MYDECL TdReqQuoteInsert(void* pApi, CThostFtdcInputQuoteField* pInputQuote, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQuoteAction(void* pApi, CThostFtdcInputQuoteActionField* pInputQuoteAction, int nRequestID);
 	FTDC2C_API int MYDECL TdReqBatchOrderAction(void* pApi, CThostFtdcInputBatchOrderActionField* pInputBatchOrderAction, int nRequestID);
+	FTDC2C_API int MYDECL TdReqOptionSelfCloseInsert(void* pApi, CThostFtdcInputOptionSelfCloseField* pInputOptionSelfClose, int nRequestID);
+	FTDC2C_API int MYDECL TdReqOptionSelfCloseAction(void* pApi, CThostFtdcInputOptionSelfCloseActionField* pInputOptionSelfCloseAction, int nRequestID);
 	FTDC2C_API int MYDECL TdReqCombActionInsert(void* pApi, CThostFtdcInputCombActionField* pInputCombAction, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryOrder(void* pApi, CThostFtdcQryOrderField* pQryOrder, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryTrade(void* pApi, CThostFtdcQryTradeField* pQryTrade, int nRequestID);
@@ -111,11 +124,16 @@ extern "C" {
 	FTDC2C_API int MYDECL TdReqQryMMInstrumentCommissionRate(void* pApi, CThostFtdcQryMMInstrumentCommissionRateField* pQryMMInstrumentCommissionRate, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryMMOptionInstrCommRate(void* pApi, CThostFtdcQryMMOptionInstrCommRateField* pQryMMOptionInstrCommRate, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryInstrumentOrderCommRate(void* pApi, CThostFtdcQryInstrumentOrderCommRateField* pQryInstrumentOrderCommRate, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQrySecAgentTradingAccount(void* pApi, CThostFtdcQryTradingAccountField* pQryTradingAccount, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQrySecAgentCheckMode(void* pApi, CThostFtdcQrySecAgentCheckModeField* pQrySecAgentCheckMode, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQrySecAgentTradeInfo(void* pApi, CThostFtdcQrySecAgentTradeInfoField* pQrySecAgentTradeInfo, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryOptionInstrTradeCost(void* pApi, CThostFtdcQryOptionInstrTradeCostField* pQryOptionInstrTradeCost, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryOptionInstrCommRate(void* pApi, CThostFtdcQryOptionInstrCommRateField* pQryOptionInstrCommRate, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryExecOrder(void* pApi, CThostFtdcQryExecOrderField* pQryExecOrder, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryForQuote(void* pApi, CThostFtdcQryForQuoteField* pQryForQuote, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryQuote(void* pApi, CThostFtdcQryQuoteField* pQryQuote, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQryOptionSelfClose(void* pApi, CThostFtdcQryOptionSelfCloseField* pQryOptionSelfClose, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQryInvestUnit(void* pApi, CThostFtdcQryInvestUnitField* pQryInvestUnit, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryCombInstrumentGuard(void* pApi, CThostFtdcQryCombInstrumentGuardField* pQryCombInstrumentGuard, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryCombAction(void* pApi, CThostFtdcQryCombActionField* pQryCombAction, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryTransferSerial(void* pApi, CThostFtdcQryTransferSerialField* pQryTransferSerial, int nRequestID);
@@ -130,6 +148,8 @@ extern "C" {
 	FTDC2C_API int MYDECL TdReqFromBankToFutureByFuture(void* pApi, CThostFtdcReqTransferField* pReqTransfer, int nRequestID);
 	FTDC2C_API int MYDECL TdReqFromFutureToBankByFuture(void* pApi, CThostFtdcReqTransferField* pReqTransfer, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQueryBankAccountMoneyByFuture(void* pApi, CThostFtdcReqQueryAccountField* pReqQueryAccount, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQryClassifiedInstrument(void* pApi, CThostFtdcQryClassifiedInstrumentField* pQryClassifiedInstrument, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQryCombPromotionParam(void* pApi, CThostFtdcQryCombPromotionParamField* pQryCombPromotionParam, int nRequestID);
 
 
 #ifdef __cplusplus

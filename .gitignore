@@ -29,3 +29,6 @@
 *.pdb
 Debug/
 Release/
+.vs/
+.vscode/
+*.vcxproj.user
