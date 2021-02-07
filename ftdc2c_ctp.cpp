@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 09:55:51
+//// 2021-02-07 10:46:07
 /////////////////////////////////////////////////////////////////////////
 
 #include "ftdc2c_ctp.h"
@@ -204,8 +204,8 @@ FTDC2C_API int MYDECL TdReqOrderAction(void* pApi, CThostFtdcInputOrderActionFie
 	return (static_cast<Trader*>(pApi))->RawApi->ReqOrderAction(pInputOrderAction, nRequestID);
 }
 
-FTDC2C_API int MYDECL TdReqQryMaxOrderVolume(void* pApi, CThostFtdcQryMaxOrderVolumeField* pQryMaxOrderVolume, int nRequestID) {
-	return (static_cast<Trader*>(pApi))->RawApi->ReqQryMaxOrderVolume(pQryMaxOrderVolume, nRequestID);
+FTDC2C_API int MYDECL TdReqQueryMaxOrderVolume(void* pApi, CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, int nRequestID) {
+	return (static_cast<Trader*>(pApi))->RawApi->ReqQueryMaxOrderVolume(pQueryMaxOrderVolume, nRequestID);
 }
 
 FTDC2C_API int MYDECL TdReqSettlementInfoConfirm(void* pApi, CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, int nRequestID) {
@@ -470,13 +470,5 @@ FTDC2C_API int MYDECL TdReqFromFutureToBankByFuture(void* pApi, CThostFtdcReqTra
 
 FTDC2C_API int MYDECL TdReqQueryBankAccountMoneyByFuture(void* pApi, CThostFtdcReqQueryAccountField* pReqQueryAccount, int nRequestID) {
 	return (static_cast<Trader*>(pApi))->RawApi->ReqQueryBankAccountMoneyByFuture(pReqQueryAccount, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqQryClassifiedInstrument(void* pApi, CThostFtdcQryClassifiedInstrumentField* pQryClassifiedInstrument, int nRequestID) {
-	return (static_cast<Trader*>(pApi))->RawApi->ReqQryClassifiedInstrument(pQryClassifiedInstrument, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqQryCombPromotionParam(void* pApi, CThostFtdcQryCombPromotionParamField* pQryCombPromotionParam, int nRequestID) {
-	return (static_cast<Trader*>(pApi))->RawApi->ReqQryCombPromotionParam(pQryCombPromotionParam, nRequestID);
 }
 

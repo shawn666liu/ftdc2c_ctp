@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 09:55:43
+//// 2021-02-07 10:46:05
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -64,7 +64,7 @@ enum class EnumOnRspEvent
 	OnRspParkedOrderInsert,
 	OnRspParkedOrderAction,
 	OnRspOrderAction,
-	OnRspQryMaxOrderVolume,
+	OnRspQueryMaxOrderVolume,
 	OnRspSettlementInfoConfirm,
 	OnRspRemoveParkedOrder,
 	OnRspRemoveParkedOrderAction,
@@ -131,8 +131,6 @@ enum class EnumOnRspEvent
 	OnRspFromBankToFutureByFuture,
 	OnRspFromFutureToBankByFuture,
 	OnRspQueryBankAccountMoneyByFuture,
-	OnRspQryClassifiedInstrument,
-	OnRspQryCombPromotionParam,
 };
 
 /// <summary>

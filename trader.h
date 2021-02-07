@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 09:55:51
+//// 2021-02-07 10:46:07
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -77,8 +77,8 @@ public:
 	void OnRspOrderAction(CThostFtdcInputOrderActionField* pInputOrderAction, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
 		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspOrderAction), pInputOrderAction, pRspInfo, nRequestID, bIsLast);
 	};
-	void OnRspQryMaxOrderVolume(CThostFtdcQryMaxOrderVolumeField* pQryMaxOrderVolume, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspQryMaxOrderVolume), pQryMaxOrderVolume, pRspInfo, nRequestID, bIsLast);
+	void OnRspQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
+		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspQueryMaxOrderVolume), pQueryMaxOrderVolume, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
 		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspSettlementInfoConfirm), pSettlementInfoConfirm, pRspInfo, nRequestID, bIsLast);
@@ -406,12 +406,6 @@ public:
 	};
 	void OnRtnChangeAccountByBank(CThostFtdcChangeAccountField* pChangeAccount) override {
 		mOnRtnEvent(pObject, int(EnumOnRtnEvent::OnRtnChangeAccountByBank), pChangeAccount);
-	};
-	void OnRspQryClassifiedInstrument(CThostFtdcInstrumentField* pInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspQryClassifiedInstrument), pInstrument, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRspQryCombPromotionParam(CThostFtdcCombPromotionParamField* pCombPromotionParam, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, int(EnumOnRspEvent::OnRspQryCombPromotionParam), pCombPromotionParam, pRspInfo, nRequestID, bIsLast);
 	};
 
 }; // end of class

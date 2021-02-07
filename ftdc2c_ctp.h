@@ -1,7 +1,7 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
 //// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 09:55:51
+//// 2021-02-07 10:46:07
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -81,7 +81,7 @@ extern "C" {
 	FTDC2C_API int MYDECL TdReqParkedOrderInsert(void* pApi, CThostFtdcParkedOrderField* pParkedOrder, int nRequestID);
 	FTDC2C_API int MYDECL TdReqParkedOrderAction(void* pApi, CThostFtdcParkedOrderActionField* pParkedOrderAction, int nRequestID);
 	FTDC2C_API int MYDECL TdReqOrderAction(void* pApi, CThostFtdcInputOrderActionField* pInputOrderAction, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQryMaxOrderVolume(void* pApi, CThostFtdcQryMaxOrderVolumeField* pQryMaxOrderVolume, int nRequestID);
+	FTDC2C_API int MYDECL TdReqQueryMaxOrderVolume(void* pApi, CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, int nRequestID);
 	FTDC2C_API int MYDECL TdReqSettlementInfoConfirm(void* pApi, CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, int nRequestID);
 	FTDC2C_API int MYDECL TdReqRemoveParkedOrder(void* pApi, CThostFtdcRemoveParkedOrderField* pRemoveParkedOrder, int nRequestID);
 	FTDC2C_API int MYDECL TdReqRemoveParkedOrderAction(void* pApi, CThostFtdcRemoveParkedOrderActionField* pRemoveParkedOrderAction, int nRequestID);
@@ -148,8 +148,6 @@ extern "C" {
 	FTDC2C_API int MYDECL TdReqFromBankToFutureByFuture(void* pApi, CThostFtdcReqTransferField* pReqTransfer, int nRequestID);
 	FTDC2C_API int MYDECL TdReqFromFutureToBankByFuture(void* pApi, CThostFtdcReqTransferField* pReqTransfer, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQueryBankAccountMoneyByFuture(void* pApi, CThostFtdcReqQueryAccountField* pReqQueryAccount, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQryClassifiedInstrument(void* pApi, CThostFtdcQryClassifiedInstrumentField* pQryClassifiedInstrument, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQryCombPromotionParam(void* pApi, CThostFtdcQryCombPromotionParamField* pQryCombPromotionParam, int nRequestID);
 
 
 #ifdef __cplusplus
