@@ -8,6 +8,12 @@ Licensed under the [MIT License](http://www.mit-license.org/)
 
 ## Version
 
-CTP version is V6.3.6 (2015-12-15)
+CTP version in master branch is v6.5.1 (2020-09-08)
 
-http://www.sfit.com.cn/5_2_DocumentDown.htm
+If you need other CTP version, just switch the git branches.
+
+e.g.  
+git checkout v6.3.15  
+git checkout v6.3.19  
+
+http://www.sfit.com.cn/5_2_DocumentDown_2.htm
