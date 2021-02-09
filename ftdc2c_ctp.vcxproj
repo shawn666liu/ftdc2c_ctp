@@ -70,23 +70,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IntDir>$(Configuration)\x86\</IntDir>
-    <OutDir>$(SolutionDir)$(Configuration)\x86\</OutDir>
+    <IntDir>$(Configuration)\$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)$(Configuration)\runtimes\win-$(PlatformTarget)\native\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IntDir>$(Configuration)\x64\</IntDir>
-    <OutDir>$(SolutionDir)\$(Configuration)\x64\</OutDir>
+    <IntDir>$(Configuration)\$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)$(Configuration)\runtimes\win-$(PlatformTarget)\native\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(Configuration)\x86\</IntDir>
-    <OutDir>$(SolutionDir)$(Configuration)\x86\</OutDir>
+    <IntDir>$(Configuration)\$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)$(Configuration)\runtimes\win-$(PlatformTarget)\native\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(Configuration)\x64\</IntDir>
-    <OutDir>$(SolutionDir)\$(Configuration)\x64\</OutDir>
+    <IntDir>$(Configuration)\$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)$(Configuration)\runtimes\win-$(PlatformTarget)\native\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -104,6 +104,11 @@
       <AdditionalDependencies>thostmduserapi_se.lib;thosttraderapi_se.lib;WinDataCollect.lib;libcmtd.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thostmduserapi_se.dll"  "$(OutDir)"
+copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thosttraderapi_se.dll"  "$(OutDir)"
+copy /y "$(ProjectDir)api\win_$(PlatformTarget)\WinDataCollect.dll"     "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -121,6 +126,11 @@
       <AdditionalDependencies>thostmduserapi_se.lib;thosttraderapi_se.lib;WinDataCollect.lib;libcmtd.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thostmduserapi_se.dll"  "$(OutDir)"
+copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thosttraderapi_se.dll"  "$(OutDir)"
+copy /y "$(ProjectDir)api\win_$(PlatformTarget)\WinDataCollect.dll"     "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -142,6 +152,11 @@
       <AdditionalDependencies>thostmduserapi_se.lib;thosttraderapi_se.lib;WinDataCollect.lib;libcmt.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thostmduserapi_se.dll"  "$(OutDir)"
+copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thosttraderapi_se.dll"  "$(OutDir)"
+copy /y "$(ProjectDir)api\win_$(PlatformTarget)\WinDataCollect.dll"     "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -163,6 +178,11 @@
       <AdditionalDependencies>thostmduserapi_se.lib;thosttraderapi_se.lib;WinDataCollect.lib;libcmt.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thostmduserapi_se.dll"  "$(OutDir)"
+copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thosttraderapi_se.dll"  "$(OutDir)"
+copy /y "$(ProjectDir)api\win_$(PlatformTarget)\WinDataCollect.dll"     "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="enums.h" />
