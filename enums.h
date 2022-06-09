@@ -1,7 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////
 //// Ftdc C++ => C Adapter
-//// Author : shawn666.liu@hotmail.com   
-//// 2021-02-07 09:55:43
+//// Author : shawn666.liu@hotmail.com
 /////////////////////////////////////////////////////////////////////////
 
 #pragma once
@@ -11,7 +10,6 @@
 /// </summary>
 enum class EnumOnErrRtnEvent
 {
-	None,
 	OnErrRtnOrderInsert,
 	OnErrRtnOrderAction,
 	OnErrRtnExecOrderInsert,
@@ -35,7 +33,6 @@ enum class EnumOnErrRtnEvent
 /// </summary>
 enum class EnumOnFrontEvent
 {
-	None,
 	OnFrontConnected,
 	OnFrontDisconnected,
 };
@@ -45,7 +42,6 @@ enum class EnumOnFrontEvent
 /// </summary>
 enum class EnumOnRspEvent
 {
-	None,
 	OnRspUserLogin,
 	OnRspUserLogout,
 	OnRspQryMulticastInstrument,
@@ -89,6 +85,7 @@ enum class EnumOnRspEvent
 	OnRspQryProduct,
 	OnRspQryInstrument,
 	OnRspQryDepthMarketData,
+	OnRspQryTraderOffer,
 	OnRspQrySettlementInfo,
 	OnRspQryTransferBank,
 	OnRspQryInvestorPositionDetail,
@@ -133,6 +130,8 @@ enum class EnumOnRspEvent
 	OnRspQueryBankAccountMoneyByFuture,
 	OnRspQryClassifiedInstrument,
 	OnRspQryCombPromotionParam,
+	OnRspQryRiskSettleInvstPosition,
+	OnRspQryRiskSettleProductStatus,
 };
 
 /// <summary>
@@ -140,7 +139,6 @@ enum class EnumOnRspEvent
 /// </summary>
 enum class EnumOnRtnEvent
 {
-	None,
 	OnRtnDepthMarketData,
 	OnRtnForQuoteRsp,
 	OnRtnOrder,
