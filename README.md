@@ -17,3 +17,8 @@ git checkout v6.5.1
 git checkout v6.6.5  
 
 https://www.simnow.com.cn/static/apiDownload.action
+
+## linux
+after install xmake from https://xmake.io  
+  
+xmake build -avy
