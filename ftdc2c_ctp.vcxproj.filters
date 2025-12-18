@@ -10,7 +10,7 @@
     <ClCompile Include="ftdc2c_ctp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="v6.6.5_20210924.txt" />
+    <Text Include="v6.7.11_20250617.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
