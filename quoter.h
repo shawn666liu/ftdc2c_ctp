@@ -14,12 +14,12 @@ public:
 	CbOnFrontEvent mOnFrontEvent{ nullptr };
 	CbOnRspEvent mOnRspEvent{ nullptr };
 	CbOnRtnEvent mOnRtnEvent{ nullptr };
-	void* pObject;
+	void* pUserObject;
 
 	Quoter(const char* pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast, bool bIsProductionMode) {
 		RawApi = CThostFtdcMdApi::CreateFtdcMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast, bIsProductionMode);
 		RawApi->RegisterSpi(this);
-		pObject = this;
+		pUserObject = this;
 	}
 
 
@@ -32,42 +32,42 @@ public:
 	};
 
 	void OnFrontConnected() override {
-		mOnFrontEvent(pObject, EnumOnFrontEvent::OnFrontConnected, 0);
+		mOnFrontEvent(pUserObject, EnumOnFrontEvent::OnFrontConnected, 0);
 	};
 	void OnFrontDisconnected(int nReason) override {
-		mOnFrontEvent(pObject, EnumOnFrontEvent::OnFrontDisconnected, nReason);
+		mOnFrontEvent(pUserObject, EnumOnFrontEvent::OnFrontDisconnected, nReason);
 	};
 	void OnHeartBeatWarning(int nTimeLapse) override {
 	};
 	void OnRspUserLogin(CThostFtdcRspUserLoginField* pRspUserLogin, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, EnumOnRspEvent::OnRspUserLogin, pRspUserLogin, pRspInfo, nRequestID, bIsLast);
+		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspUserLogin, pRspUserLogin, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspUserLogout(CThostFtdcUserLogoutField* pUserLogout, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, EnumOnRspEvent::OnRspUserLogout, pUserLogout, pRspInfo, nRequestID, bIsLast);
+		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspUserLogout, pUserLogout, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspQryMulticastInstrument(CThostFtdcMulticastInstrumentField* pMulticastInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, EnumOnRspEvent::OnRspQryMulticastInstrument, pMulticastInstrument, pRspInfo, nRequestID, bIsLast);
+		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryMulticastInstrument, pMulticastInstrument, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspError(CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, EnumOnRspEvent::OnRspError, nullptr, pRspInfo, nRequestID, bIsLast);
+		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspError, nullptr, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, EnumOnRspEvent::OnRspSubMarketData, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
+		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspSubMarketData, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, EnumOnRspEvent::OnRspUnSubMarketData, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
+		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspUnSubMarketData, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, EnumOnRspEvent::OnRspSubForQuoteRsp, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
+		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspSubForQuoteRsp, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pObject, EnumOnRspEvent::OnRspUnSubForQuoteRsp, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
+		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspUnSubForQuoteRsp, pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField* pDepthMarketData) override {
-		mOnRtnEvent(pObject, EnumOnRtnEvent::OnRtnDepthMarketData, pDepthMarketData);
+		mOnRtnEvent(pUserObject, EnumOnRtnEvent::OnRtnDepthMarketData, pDepthMarketData);
 	};
 	void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField* pForQuoteRsp) override {
-		mOnRtnEvent(pObject, EnumOnRtnEvent::OnRtnForQuoteRsp, pForQuoteRsp);
+		mOnRtnEvent(pUserObject, EnumOnRtnEvent::OnRtnForQuoteRsp, pForQuoteRsp);
 	};
 
 }; // end of class
