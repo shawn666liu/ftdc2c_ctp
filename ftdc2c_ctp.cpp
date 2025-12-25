@@ -25,8 +25,8 @@ FTDC2C_API void MYDECL MdRegisterCallback(void* quoter, CbOnFrontEvent c1, CbOnR
 		p->pUserObject = pUserObject;
 }
 
-FTDC2C_API void* MYDECL MdCreateApi(const char* pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast, bool bIsProductionMode) {
-	return new Quoter((char*)pszFlowPath, bIsUsingUdp, bIsMulticast, bIsProductionMode);
+FTDC2C_API void* MYDECL MdCreateApi(const char* pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast) {
+	return new Quoter((char*)pszFlowPath, bIsUsingUdp, bIsMulticast);
 }
 
 FTDC2C_API const char* MYDECL MdGetApiVersion() {
@@ -100,8 +100,8 @@ FTDC2C_API void MYDECL TdRegisterCallback(void* trader, CbOnErrRtnEvent c1, CbOn
 		p->pUserObject = pUserObject;
 }
 
-FTDC2C_API void* MYDECL TdCreateApi(const char* pszFlowPath, bool bIsProductionMode) {
-	return new Trader((char*)pszFlowPath, bIsProductionMode);
+FTDC2C_API void* MYDECL TdCreateApi(const char* pszFlowPath) {
+	return new Trader((char*)pszFlowPath);
 }
 
 FTDC2C_API const char* MYDECL TdGetApiVersion() {
@@ -114,10 +114,6 @@ FTDC2C_API void MYDECL TdInit(void* trader) {
 
 FTDC2C_API const char* MYDECL TdGetTradingDay(void* trader) {
 	return (static_cast<Trader*>(trader))->RawApi->GetTradingDay();
-}
-
-FTDC2C_API void MYDECL TdGetFrontInfo(void* trader, const CThostFtdcFrontInfoField* pFrontInfo) {
-	(static_cast<Trader*>(trader))->RawApi->GetFrontInfo((CThostFtdcFrontInfoField*)pFrontInfo);
 }
 
 FTDC2C_API void MYDECL TdRegisterFront(void* trader, const char* pszFrontAddress) {
@@ -150,14 +146,6 @@ FTDC2C_API int MYDECL TdRegisterUserSystemInfo(void* trader, const CThostFtdcUse
 
 FTDC2C_API int MYDECL TdSubmitUserSystemInfo(void* trader, const CThostFtdcUserSystemInfoField* pUserSystemInfo) {
 	return (static_cast<Trader*>(trader))->RawApi->SubmitUserSystemInfo((CThostFtdcUserSystemInfoField*)pUserSystemInfo);
-}
-
-FTDC2C_API int MYDECL TdRegisterWechatUserSystemInfo(void* trader, const CThostFtdcWechatUserSystemInfoField* pUserSystemInfo) {
-	return (static_cast<Trader*>(trader))->RawApi->RegisterWechatUserSystemInfo((CThostFtdcWechatUserSystemInfoField*)pUserSystemInfo);
-}
-
-FTDC2C_API int MYDECL TdSubmitWechatUserSystemInfo(void* trader, const CThostFtdcWechatUserSystemInfoField* pUserSystemInfo) {
-	return (static_cast<Trader*>(trader))->RawApi->SubmitWechatUserSystemInfo((CThostFtdcWechatUserSystemInfoField*)pUserSystemInfo);
 }
 
 FTDC2C_API int MYDECL TdReqUserLogin(void* trader, const CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID) {
@@ -298,10 +286,6 @@ FTDC2C_API int MYDECL TdReqQryInstrumentMarginRate(void* trader, const CThostFtd
 
 FTDC2C_API int MYDECL TdReqQryInstrumentCommissionRate(void* trader, const CThostFtdcQryInstrumentCommissionRateField* pQryInstrumentCommissionRate, int nRequestID) {
 	return (static_cast<Trader*>(trader))->RawApi->ReqQryInstrumentCommissionRate((CThostFtdcQryInstrumentCommissionRateField*)pQryInstrumentCommissionRate, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqQryUserSession(void* trader, const CThostFtdcQryUserSessionField* pQryUserSession, int nRequestID) {
-	return (static_cast<Trader*>(trader))->RawApi->ReqQryUserSession((CThostFtdcQryUserSessionField*)pQryUserSession, nRequestID);
 }
 
 FTDC2C_API int MYDECL TdReqQryExchange(void* trader, const CThostFtdcQryExchangeField* pQryExchange, int nRequestID) {
@@ -602,29 +586,5 @@ FTDC2C_API int MYDECL TdReqQryRULEInterParameter(void* trader, const CThostFtdcQ
 
 FTDC2C_API int MYDECL TdReqQryInvestorProdRULEMargin(void* trader, const CThostFtdcQryInvestorProdRULEMarginField* pQryInvestorProdRULEMargin, int nRequestID) {
 	return (static_cast<Trader*>(trader))->RawApi->ReqQryInvestorProdRULEMargin((CThostFtdcQryInvestorProdRULEMarginField*)pQryInvestorProdRULEMargin, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqQryInvestorPortfSetting(void* trader, const CThostFtdcQryInvestorPortfSettingField* pQryInvestorPortfSetting, int nRequestID) {
-	return (static_cast<Trader*>(trader))->RawApi->ReqQryInvestorPortfSetting((CThostFtdcQryInvestorPortfSettingField*)pQryInvestorPortfSetting, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqQryInvestorInfoCommRec(void* trader, const CThostFtdcQryInvestorInfoCommRecField* pQryInvestorInfoCommRec, int nRequestID) {
-	return (static_cast<Trader*>(trader))->RawApi->ReqQryInvestorInfoCommRec((CThostFtdcQryInvestorInfoCommRecField*)pQryInvestorInfoCommRec, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqQryCombLeg(void* trader, const CThostFtdcQryCombLegField* pQryCombLeg, int nRequestID) {
-	return (static_cast<Trader*>(trader))->RawApi->ReqQryCombLeg((CThostFtdcQryCombLegField*)pQryCombLeg, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqOffsetSetting(void* trader, const CThostFtdcInputOffsetSettingField* pInputOffsetSetting, int nRequestID) {
-	return (static_cast<Trader*>(trader))->RawApi->ReqOffsetSetting((CThostFtdcInputOffsetSettingField*)pInputOffsetSetting, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqCancelOffsetSetting(void* trader, const CThostFtdcInputOffsetSettingField* pInputOffsetSetting, int nRequestID) {
-	return (static_cast<Trader*>(trader))->RawApi->ReqCancelOffsetSetting((CThostFtdcInputOffsetSettingField*)pInputOffsetSetting, nRequestID);
-}
-
-FTDC2C_API int MYDECL TdReqQryOffsetSetting(void* trader, const CThostFtdcQryOffsetSettingField* pQryOffsetSetting, int nRequestID) {
-	return (static_cast<Trader*>(trader))->RawApi->ReqQryOffsetSetting((CThostFtdcQryOffsetSettingField*)pQryOffsetSetting, nRequestID);
 }
 

@@ -17,8 +17,8 @@ public:
 	CbOnRtnEvent mOnRtnEvent{ nullptr };
 	void* pUserObject;
 
-	Trader(const char* pszFlowPath, bool bIsProductionMode) {
-		RawApi = CThostFtdcTraderApi::CreateFtdcTraderApi(pszFlowPath, bIsProductionMode);
+	Trader(const char* pszFlowPath) {
+		RawApi = CThostFtdcTraderApi::CreateFtdcTraderApi(pszFlowPath);
 		RawApi->RegisterSpi(this);
 		pUserObject = this;
 	}
@@ -138,9 +138,6 @@ public:
 	};
 	void OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateField* pInstrumentCommissionRate, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
 		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryInstrumentCommissionRate, pInstrumentCommissionRate, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRspQryUserSession(CThostFtdcUserSessionField* pUserSession, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryUserSession, pUserSession, pRspInfo, nRequestID, bIsLast);
 	};
 	void OnRspQryExchange(CThostFtdcExchangeField* pExchange, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
 		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryExchange, pExchange, pRspInfo, nRequestID, bIsLast);
@@ -495,33 +492,6 @@ public:
 	};
 	void OnRspQryInvestorProdRULEMargin(CThostFtdcInvestorProdRULEMarginField* pInvestorProdRULEMargin, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
 		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryInvestorProdRULEMargin, pInvestorProdRULEMargin, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRspQryInvestorPortfSetting(CThostFtdcInvestorPortfSettingField* pInvestorPortfSetting, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryInvestorPortfSetting, pInvestorPortfSetting, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRspQryInvestorInfoCommRec(CThostFtdcInvestorInfoCommRecField* pInvestorInfoCommRec, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryInvestorInfoCommRec, pInvestorInfoCommRec, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRspQryCombLeg(CThostFtdcCombLegField* pCombLeg, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryCombLeg, pCombLeg, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRspOffsetSetting(CThostFtdcInputOffsetSettingField* pInputOffsetSetting, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspOffsetSetting, pInputOffsetSetting, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRspCancelOffsetSetting(CThostFtdcInputOffsetSettingField* pInputOffsetSetting, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspCancelOffsetSetting, pInputOffsetSetting, pRspInfo, nRequestID, bIsLast);
-	};
-	void OnRtnOffsetSetting(CThostFtdcOffsetSettingField* pOffsetSetting) override {
-		mOnRtnEvent(pUserObject, EnumOnRtnEvent::OnRtnOffsetSetting, pOffsetSetting);
-	};
-	void OnErrRtnOffsetSetting(CThostFtdcInputOffsetSettingField* pInputOffsetSetting, CThostFtdcRspInfoField* pRspInfo) override {
-		mOnErrRtnEvent(pUserObject, EnumOnErrRtnEvent::OnErrRtnOffsetSetting, pInputOffsetSetting, pRspInfo);
-	};
-	void OnErrRtnCancelOffsetSetting(CThostFtdcCancelOffsetSettingField* pCancelOffsetSetting, CThostFtdcRspInfoField* pRspInfo) override {
-		mOnErrRtnEvent(pUserObject, EnumOnErrRtnEvent::OnErrRtnCancelOffsetSetting, pCancelOffsetSetting, pRspInfo);
-	};
-	void OnRspQryOffsetSetting(CThostFtdcOffsetSettingField* pOffsetSetting, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override {
-		mOnRspEvent(pUserObject, EnumOnRspEvent::OnRspQryOffsetSetting, pOffsetSetting, pRspInfo, nRequestID, bIsLast);
 	};
 
 }; // end of class

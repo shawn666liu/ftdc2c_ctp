@@ -37,7 +37,7 @@ extern "C" {
 	FTDC2C_API void MYDECL MdDestroyApi(void* quoter);
 	FTDC2C_API void* MYDECL MdSetUserObject(void* quoter, void* pUserObject);
 	FTDC2C_API void MYDECL MdRegisterCallback(void* quoter, CbOnFrontEvent c1, CbOnRspEvent c2, CbOnRtnEvent c3, void* pUserObject);
-	FTDC2C_API void* MYDECL MdCreateApi(const char* pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast, bool bIsProductionMode);
+	FTDC2C_API void* MYDECL MdCreateApi(const char* pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast);
 	FTDC2C_API const char* MYDECL MdGetApiVersion();
 	FTDC2C_API void MYDECL MdInit(void* quoter);
 	FTDC2C_API const char* MYDECL MdGetTradingDay(void* quoter);
@@ -55,11 +55,10 @@ extern "C" {
 	FTDC2C_API void MYDECL TdDestroyApi(void* trader);
 	FTDC2C_API void* MYDECL TdSetUserObject(void* trader, void* pUserObject);
 	FTDC2C_API void MYDECL TdRegisterCallback(void* trader, CbOnErrRtnEvent c1, CbOnFrontEvent c2, CbOnRspEvent c3, CbOnRtnEvent c4, void* pUserObject);
-	FTDC2C_API void* MYDECL TdCreateApi(const char* pszFlowPath, bool bIsProductionMode);
+	FTDC2C_API void* MYDECL TdCreateApi(const char* pszFlowPath);
 	FTDC2C_API const char* MYDECL TdGetApiVersion();
 	FTDC2C_API void MYDECL TdInit(void* trader);
 	FTDC2C_API const char* MYDECL TdGetTradingDay(void* trader);
-	FTDC2C_API void MYDECL TdGetFrontInfo(void* trader, const CThostFtdcFrontInfoField* pFrontInfo);
 	FTDC2C_API void MYDECL TdRegisterFront(void* trader, const char* pszFrontAddress);
 	FTDC2C_API void MYDECL TdRegisterNameServer(void* trader, const char* pszNsAddress);
 	FTDC2C_API void MYDECL TdRegisterFensUserInfo(void* trader, const CThostFtdcFensUserInfoField* pFensUserInfo);
@@ -68,8 +67,6 @@ extern "C" {
 	FTDC2C_API int MYDECL TdReqAuthenticate(void* trader, const CThostFtdcReqAuthenticateField* pReqAuthenticateField, int nRequestID);
 	FTDC2C_API int MYDECL TdRegisterUserSystemInfo(void* trader, const CThostFtdcUserSystemInfoField* pUserSystemInfo);
 	FTDC2C_API int MYDECL TdSubmitUserSystemInfo(void* trader, const CThostFtdcUserSystemInfoField* pUserSystemInfo);
-	FTDC2C_API int MYDECL TdRegisterWechatUserSystemInfo(void* trader, const CThostFtdcWechatUserSystemInfoField* pUserSystemInfo);
-	FTDC2C_API int MYDECL TdSubmitWechatUserSystemInfo(void* trader, const CThostFtdcWechatUserSystemInfoField* pUserSystemInfo);
 	FTDC2C_API int MYDECL TdReqUserLogin(void* trader, const CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID);
 	FTDC2C_API int MYDECL TdReqUserLogout(void* trader, const CThostFtdcUserLogoutField* pUserLogout, int nRequestID);
 	FTDC2C_API int MYDECL TdReqUserPasswordUpdate(void* trader, const CThostFtdcUserPasswordUpdateField* pUserPasswordUpdate, int nRequestID);
@@ -105,7 +102,6 @@ extern "C" {
 	FTDC2C_API int MYDECL TdReqQryTradingCode(void* trader, const CThostFtdcQryTradingCodeField* pQryTradingCode, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryInstrumentMarginRate(void* trader, const CThostFtdcQryInstrumentMarginRateField* pQryInstrumentMarginRate, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryInstrumentCommissionRate(void* trader, const CThostFtdcQryInstrumentCommissionRateField* pQryInstrumentCommissionRate, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQryUserSession(void* trader, const CThostFtdcQryUserSessionField* pQryUserSession, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryExchange(void* trader, const CThostFtdcQryExchangeField* pQryExchange, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryProduct(void* trader, const CThostFtdcQryProductField* pQryProduct, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryInstrument(void* trader, const CThostFtdcQryInstrumentField* pQryInstrument, int nRequestID);
@@ -181,12 +177,6 @@ extern "C" {
 	FTDC2C_API int MYDECL TdReqQryRULEIntraParameter(void* trader, const CThostFtdcQryRULEIntraParameterField* pQryRULEIntraParameter, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryRULEInterParameter(void* trader, const CThostFtdcQryRULEInterParameterField* pQryRULEInterParameter, int nRequestID);
 	FTDC2C_API int MYDECL TdReqQryInvestorProdRULEMargin(void* trader, const CThostFtdcQryInvestorProdRULEMarginField* pQryInvestorProdRULEMargin, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQryInvestorPortfSetting(void* trader, const CThostFtdcQryInvestorPortfSettingField* pQryInvestorPortfSetting, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQryInvestorInfoCommRec(void* trader, const CThostFtdcQryInvestorInfoCommRecField* pQryInvestorInfoCommRec, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQryCombLeg(void* trader, const CThostFtdcQryCombLegField* pQryCombLeg, int nRequestID);
-	FTDC2C_API int MYDECL TdReqOffsetSetting(void* trader, const CThostFtdcInputOffsetSettingField* pInputOffsetSetting, int nRequestID);
-	FTDC2C_API int MYDECL TdReqCancelOffsetSetting(void* trader, const CThostFtdcInputOffsetSettingField* pInputOffsetSetting, int nRequestID);
-	FTDC2C_API int MYDECL TdReqQryOffsetSetting(void* trader, const CThostFtdcQryOffsetSettingField* pQryOffsetSetting, int nRequestID);
 
 
 #ifdef __cplusplus

@@ -16,8 +16,8 @@ public:
 	CbOnRtnEvent mOnRtnEvent{ nullptr };
 	void* pUserObject;
 
-	Quoter(const char* pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast, bool bIsProductionMode) {
-		RawApi = CThostFtdcMdApi::CreateFtdcMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast, bIsProductionMode);
+	Quoter(const char* pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast) {
+		RawApi = CThostFtdcMdApi::CreateFtdcMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast);
 		RawApi->RegisterSpi(this);
 		pUserObject = this;
 	}

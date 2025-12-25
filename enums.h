@@ -26,8 +26,6 @@ enum class EnumOnErrRtnEvent
 	OnErrRtnRepealBankToFutureByFutureManual,
 	OnErrRtnRepealFutureToBankByFutureManual,
 	OnErrRtnQueryBankBalanceByFuture,
-	OnErrRtnOffsetSetting,
-	OnErrRtnCancelOffsetSetting,
 };
 
 /// <summary>
@@ -83,7 +81,6 @@ enum class EnumOnRspEvent
 	OnRspQryTradingCode,
 	OnRspQryInstrumentMarginRate,
 	OnRspQryInstrumentCommissionRate,
-	OnRspQryUserSession,
 	OnRspQryExchange,
 	OnRspQryProduct,
 	OnRspQryInstrument,
@@ -159,12 +156,6 @@ enum class EnumOnRspEvent
 	OnRspQryRULEIntraParameter,
 	OnRspQryRULEInterParameter,
 	OnRspQryInvestorProdRULEMargin,
-	OnRspQryInvestorPortfSetting,
-	OnRspQryInvestorInfoCommRec,
-	OnRspQryCombLeg,
-	OnRspOffsetSetting,
-	OnRspCancelOffsetSetting,
-	OnRspQryOffsetSetting,
 };
 
 /// <summary>
@@ -199,6 +190,5 @@ enum class EnumOnRtnEvent
 	OnRtnOpenAccountByBank,
 	OnRtnCancelAccountByBank,
 	OnRtnChangeAccountByBank,
-	OnRtnOffsetSetting,
 };
 
