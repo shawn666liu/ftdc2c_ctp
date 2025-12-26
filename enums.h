@@ -28,6 +28,7 @@ enum class EnumOnErrRtnEvent
 	OnErrRtnQueryBankBalanceByFuture,
 	OnErrRtnOffsetSetting,
 	OnErrRtnCancelOffsetSetting,
+	MaxValue // 无效值,保留
 };
 
 /// <summary>
@@ -37,6 +38,7 @@ enum class EnumOnFrontEvent
 {
 	OnFrontConnected,
 	OnFrontDisconnected,
+	MaxValue // 无效值,保留
 };
 
 /// <summary>
@@ -165,6 +167,7 @@ enum class EnumOnRspEvent
 	OnRspOffsetSetting,
 	OnRspCancelOffsetSetting,
 	OnRspQryOffsetSetting,
+	MaxValue // 无效值,保留
 };
 
 /// <summary>
@@ -200,5 +203,6 @@ enum class EnumOnRtnEvent
 	OnRtnCancelAccountByBank,
 	OnRtnChangeAccountByBank,
 	OnRtnOffsetSetting,
+	MaxValue // 无效值,保留
 };
 
