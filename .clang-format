@@ -1,0 +1,94 @@
+﻿UseTab: Never
+IndentWidth: 4
+AccessModifierOffset: -4
+AlignAfterOpenBracket: Align
+# 赋值对齐，导致搜索对某变量赋值的地方需要使用正则表达式才行了, 可以设置为false
+AlignConsecutiveAssignments: false 
+AlignConsecutiveBitFields: false
+AlignConsecutiveDeclarations: false
+AlignConsecutiveMacros: false
+AlignEscapedNewlines: Left
+AlignOperands: AlignAfterOperator
+AlignTrailingComments: true
+AllowAllArgumentsOnNextLine: false
+AllowAllConstructorInitializersOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Inline
+# AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLambdasOnASingleLine: Empty
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+ AfterCaseLabel: true
+ AfterClass: true
+ AfterControlStatement: Always
+ AfterEnum: false
+ AfterFunction: true
+ AfterNamespace: true
+ AfterObjCDeclaration: true
+ AfterStruct: true
+ AfterUnion: true
+ AfterExternBlock: true
+ BeforeCatch: true
+ BeforeElse: true
+ BeforeLambdaBody: true
+ BeforeWhile: true
+ IndentBraces: false
+ SplitEmptyFunction: false
+ SplitEmptyRecord: false
+ SplitEmptyNamespace: false
+# ? BreakTemplateDeclarationsStyle: Yes
+BinPackArguments: true
+BinPackParameters: true
+BitFieldColonSpacing: After
+BreakAfterJavaFieldAnnotations: false
+# BreakBeforeBinaryOperators
+BreakBeforeConceptDeclarations: false
+# BreakBeforeTernaryOperators
+# 构造函数成员初始化，逗号在行首
+BreakConstructorInitializers: BeforeComma
+# BreakInheritanceList
+# BreakStringLiterals
+BreakTemplateDeclarations: Yes
+ColumnLimit: 0
+# CompactNamespaces
+# ? IndentAccessModifiers: false
+IndentCaseBlocks: false
+IndentCaseLabels: true
+IndentExternBlock: NoIndent
+IndentGotoLabels: false
+IndentPPDirectives: BeforeHash
+IndentWrappedFunctionNames: true
+PackConstructorInitializers: Never
+PointerAlignment: Left
+ReflowComments: false
+SortIncludes: true
+SortUsingDeclarations: false
+SpaceAfterCStyleCast: true
+SpaceAfterLogicalNot: true
+SpaceAfterTemplateKeyword: false
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: true
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+# 2025-09-29 Update
+# AfterEnum: false
