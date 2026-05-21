@@ -190,6 +190,7 @@
   <error id="OFFER_LOCALTIME_OFFSET_IS_TOO_LARGE" value="1044" prompt="银期转账：银期报盘机器时间偏移太大"/>
   <error id="FUTURESERIAL_HAS_BEEN_PROCESSED" value="1045" prompt="银期转账：该期货流水号已经处理过"/>
   <error id="SEC_TRANSFER_NOT_AVAILABLE" value="1046" prompt="银期转账：次席转账组件当前不可用"/>
+	<error id="REPEAL_INSUFFICIENT_MONEY" value="1047" prompt="CTP:银期转账：资金不足不允许冲正"/>
 <!-- add for transfer begin -->
 	<error id="NO_VALID_BANKOFFER_AVAILABLE" value="2000" prompt="CTP:该报盘未连接到银行"/>
 	<error id="PASSWORD_MISMATCH" value="2001" prompt="CTP:资金密码错误"/>
@@ -209,7 +210,7 @@
     <error id="BANK_INTERNAL_ERR" value="2018" prompt="CTP:银行内部错误,需要找银行确认成功还是失败"/>
 	<error id="WAITING_OFFER_RSP" value="999999" prompt="CTP:等待银期报盘处理结果"/>
 	<error id="TRANSFER_NOT_DEFAULT_ACCOUNT" value="2019" prompt="CTP:转账卡号非预留银行账户"/>
-
+	<error id="CHECKD_FILE_ARRIVED" value="2020" prompt="CTP:当前对账文件已到达，无需签退"/>
 	<!-- add for transfer end -->
 	<!--add 建行新一代银期-->
   <error id="PW_PASSWORD" value="2050" prompt="建行银期：密码与认证(业务错误)"/> 
@@ -306,4 +307,23 @@
    <error id="OFFSET_SETTING_DOUBLE_SET" value="6004" prompt="CTP:对冲设置不能重复提交，需要先撤销再设置"/>
    <error id="OFFSET_SETTING_REC_NOT_FOUND" value="6005" prompt="CTP:撤销对冲设置未找到记录"/>
    <error id="OFFSET_SETTING_STATUS_ERR" value="6006" prompt="CTP:对冲状态不对，不能撤销"/>
+	<error id="SPD_APPLY_ORDER_REF_NOT_FOUND" value="6007" prompt="CTP:未找到套利申请记录"/>
+	<error id="SPD_APPLY_STATUS_ERR" value="6008" prompt="CTP:套利申请已撤销，不能重复撤销"/>
+	<error id="HEDGE_CFM_ORDER_REF_NOT_FOUND" value="6009" prompt="CTP:未找到套保申请记录"/>
+	<error id="HEDGE_CFM_STATUS_ERR" value="6010" prompt="CTP:套保申请已撤销，不能重复撤销"/>
+   
+   <error id="COMB_PARKED_ORDER_INSERT" value="6011" prompt="CTP:不允许报入组合合约预埋单"/>
+   <error id="COMB_PARKED_ORDER_ACTION" value="6012" prompt="CTP:不允许报入组合合约预埋撤单"/>
+   <error id="COMB_CONDITION_ORDER_INSERT" value="6013" prompt="CTP:不允许报入组合合约条件单"/>
+   
+    <error id="MOBILE_NOT_MATCH" value="6014" prompt="CTP:非预留手机号"/>
+	<error id="SMSVERIFY_NOT_CONFIG" value="6015" prompt="CTP:该用户没有开启短信验证"/>
+	<error id="DUP_SMSCODE_GEN_REQ" value="6016" prompt="CTP:重复的申请验证码请求"/>
+	<error id="SMSCODE_MISMATCH" value="6017" prompt="CTP:验证码不匹配"/>
+	<error id="SMSCODE_USED" value="6018" prompt="CTP:验证码已经使用过"/>
+	<error id="SMSCODE_OUTOFTIME" value="6019" prompt="CTP:验证码已过期"/>
+	<error id="SMSCODE_NEEDED" value="6020" prompt="CTP:您已开启短信认证，请填写短信验证码"/>
+	<error id="DR_SMSVERIFY_NOT_CONFIG" value="6021" prompt="CTP:该中心未配置短信验证功能"/>
+	<error id="OFFSET_TIME_FORBIDDEN" value="6022" prompt="CTP:该时间为到期日盘后禁止客户端自对冲时间，禁止申报"/>
+	<error id="AFTER_LOGIN" value="6023" prompt="CTP:您已登录成功，不允许申请验证码"/>
 </errors>

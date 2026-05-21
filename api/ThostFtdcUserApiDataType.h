@@ -15,7 +15,8 @@ enum THOST_TE_RESUME_TYPE
 	THOST_TERT_RESTART = 0,
 	THOST_TERT_RESUME,
 	THOST_TERT_QUICK,
-	THOST_TERT_NONE
+	THOST_TERT_NONE,
+	THOST_TERT_RESUME_FROM_SEQ_NO
 };
 
 /////////////////////////////////////////////////////////////////////////
@@ -127,6 +128,11 @@ typedef char TThostFtdcExchangeFlagType[2];
 ///TFtdcMacAddressType是一个Mac地址类型
 /////////////////////////////////////////////////////////////////////////
 typedef char TThostFtdcMacAddressType[21];
+
+/////////////////////////////////////////////////////////////////////////
+///TFtdcDeviceTagType是一个客户端机器标识,可填MAC或UUID类型
+/////////////////////////////////////////////////////////////////////////
+typedef char TThostFtdcDeviceTagType[41];
 
 /////////////////////////////////////////////////////////////////////////
 ///TFtdcSystemIDType是一个系统编号类型
@@ -547,6 +553,8 @@ typedef char TThostFtdcFunctionCodeType;
 #define THOST_FTDC_BFC_FBSign 'W'
 ///银期签约解约
 #define THOST_FTDC_BFC_FBAccount 'X'
+///接收短信验证码
+#define THOST_FTDC_BFC_RcvSMSCode 'Y'
 
 typedef char TThostFtdcBrokerFunctionCodeType;
 
@@ -1559,6 +1567,10 @@ typedef char TThostFtdcSystemParamIDType;
 #define THOST_FTDC_TPID_TradeChkPriceVol 'k'
 ///卖出垂直价差组合新算法
 #define THOST_FTDC_TPID_NewBESMarginAlgo 'l'
+///大商所期货组合平仓冻结算法
+#define THOST_FTDC_TPID_IsDceFutCloseFrozen 'm'
+///是否启用短信验证
+#define THOST_FTDC_TPID_UseSMSVerify 'n'
 
 typedef char TThostFtdcTradeParamIDType;
 
@@ -6927,7 +6939,7 @@ typedef double TThostFtdcDeltaType;
 typedef int TThostFtdcSpreadIdType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPortfolioType是一个新型组保算法类型
+///TFtdcPortfolioType是一个组保算法类型
 /////////////////////////////////////////////////////////////////////////
 ///不使用新型组保算法
 #define THOST_FTDC_EPF_None '0'
@@ -7193,5 +7205,60 @@ typedef char TThostFtdcApplySrcType;
 ///TFtdcReserveInfoType是一个预留信息类型
 /////////////////////////////////////////////////////////////////////////
 typedef char TThostFtdcReserveInfoType[65];
+
+/////////////////////////////////////////////////////////////////////////
+///TFtdcApplyStatusType是一个套利套保申请状态类型
+/////////////////////////////////////////////////////////////////////////
+///未知
+#define THOST_FTDC_AS2_Unknown 'a'
+///已撤销
+#define THOST_FTDC_AS2_Canceled '0'
+///已挂起
+#define THOST_FTDC_AS2_Suspended '1'
+///申请成功
+#define THOST_FTDC_AS2_Accepted '3'
+
+typedef char TThostFtdcApplyStatusType;
+
+/////////////////////////////////////////////////////////////////////////
+///TFtdcCmbTypeType是一个组合定单类型，0类型
+/////////////////////////////////////////////////////////////////////////
+///SPZ
+#define THOST_FTDC_ZCECT_SPZ '0'
+///SPD
+#define THOST_FTDC_ZCECT_SPD '1'
+///IPS
+#define THOST_FTDC_ZCECT_IPS '2'
+///BUL
+#define THOST_FTDC_ZCECT_BUL '3'
+///BER
+#define THOST_FTDC_ZCECT_BER '4'
+///BLT
+#define THOST_FTDC_ZCECT_BLT '5'
+///BRT
+#define THOST_FTDC_ZCECT_BRT '6'
+///STD
+#define THOST_FTDC_ZCECT_STD '7'
+///STG
+#define THOST_FTDC_ZCECT_STG '8'
+///PRT
+#define THOST_FTDC_ZCECT_PRT '9'
+
+typedef char TThostFtdcCmbTypeType;
+
+/////////////////////////////////////////////////////////////////////////
+///TFtdcSMSCodeType是一个短信验证码类型
+/////////////////////////////////////////////////////////////////////////
+typedef char TThostFtdcSMSCodeType[17];
+
+/////////////////////////////////////////////////////////////////////////
+///TFtdcSMSContentType是一个短信内容类型
+/////////////////////////////////////////////////////////////////////////
+typedef char TThostFtdcSMSContentType[129];
+
+/////////////////////////////////////////////////////////////////////////
+///TFtdcSMSPhoneType是一个手机号类型
+/////////////////////////////////////////////////////////////////////////
+typedef char TThostFtdcSMSPhoneType[17];
 
 #endif

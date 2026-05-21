@@ -194,7 +194,7 @@ copy /y "$(ProjectDir)api\win_$(PlatformTarget)\thosttraderapi_se.dll"  "$(OutDi
     <ClCompile Include="ftdc2c_ctp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="v6.7.11_20250617.txt" />
+    <Text Include="v6.7.13_20260225.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

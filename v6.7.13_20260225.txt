@@ -1,0 +1,7 @@
+﻿API来源：simnow官方网站
+
+https://www.simnow.com.cn/static/apiDownload.action
+
+traderapi v6.7.13_20260225
+https://www.simnow.com.cn/DocumentDown/api_3/5_2_2/v6.7.13_20260225_trader.zip
+

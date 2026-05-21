@@ -48,6 +48,9 @@ public:
 	///客户端认证响应
 	virtual void OnRspAuthenticate(CThostFtdcRspAuthenticateField *pRspAuthenticateField, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 	
+	///该方法在处理私有流之前被调用
+	///@param nSeqNo 即将被处理的私有流的序号
+	virtual void OnRtnPrivateSeqNo(int nSeqNo) {};	
 
 	///登录请求响应
 	virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
@@ -528,6 +531,45 @@ public:
 
 	///投资者对冲设置查询响应
 	virtual void OnRspQryOffsetSetting(CThostFtdcOffsetSettingField *pOffsetSetting, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///申请短信验证码响应
+	virtual void OnRspGenSMSCode(CThostFtdcRspGenSMSCodeField *pRspGenSMSCode, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///套利确认回复
+	virtual void OnRspSpdApply(CThostFtdcInputSpdApplyField *pInputSpdApply, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///套利确认撤销回复
+	virtual void OnRspSpdApplyAction(CThostFtdcInputSpdApplyActionField *pInputSpdApplyAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///套利确认查询回复
+	virtual void OnRspQrySpdApply(CThostFtdcSpdApplyField *pSpdApply, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///套利确认通知
+	virtual void OnRtnSpdApply(CThostFtdcSpdApplyField *pSpdApply) {};
+
+	///套利申请录入错误回报
+	virtual void OnErrRtnSpdApply(CThostFtdcInputSpdApplyField *pInputSpdApply, CThostFtdcRspInfoField *pRspInfo) {};
+
+	///套利确认撤销通知
+	virtual void OnErrRtnSpdApplyAction(CThostFtdcSpdApplyActionField *pSpdApplyAction, CThostFtdcRspInfoField *pRspInfo) {};
+
+	///套保确认回复
+	virtual void OnRspHedgeCfm(CThostFtdcInputHedgeCfmField *pInputHedgeCfm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///套保确认撤销回复
+	virtual void OnRspHedgeCfmAction(CThostFtdcInputHedgeCfmActionField *pInputHedgeCfmAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///套保确认查询回复
+	virtual void OnRspQryHedgeCfm(CThostFtdcHedgeCfmField *pHedgeCfm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///套保确认通知
+	virtual void OnRtnHedgeCfm(CThostFtdcHedgeCfmField *pHedgeCfm) {};
+
+	///套保额度录入错误回报
+	virtual void OnErrRtnHedgeCfm(CThostFtdcInputHedgeCfmField *pInputHedgeCfm, CThostFtdcRspInfoField *pRspInfo) {};
+
+	///套保确认撤销通知
+	virtual void OnErrRtnHedgeCfmAction(CThostFtdcHedgeCfmActionField *pHedgeCfmAction, CThostFtdcRspInfoField *pRspInfo) {};
 };
 
 class TRADER_API_EXPORT CThostFtdcTraderApi
@@ -592,8 +634,10 @@ public:
 	///        THOST_TERT_RESTART:从本交易日开始重传
 	///        THOST_TERT_RESUME:从上次收到的续传
 	///        THOST_TERT_QUICK:只传送登录后私有流的内容
+	///        THOST_TERT_RESUME_FROM_SEQ_NO:从指定序号开始重传，序号从1开始
+	///@param nSeqNo 私有流序号，只在THOST_TERT_RESUME_FROM_SEQ_NO模式下有效
 	///@remark 该方法要在Init方法前调用。若不调用则不会收到私有流的数据。
-	virtual void SubscribePrivateTopic(THOST_TE_RESUME_TYPE nResumeType) = 0;
+	virtual void SubscribePrivateTopic(THOST_TE_RESUME_TYPE nResumeType, int nSeqNo=1) = 0;
 	
 	///订阅公共流。
 	///@param nResumeType 公共流重传方式  
@@ -969,6 +1013,27 @@ public:
 
 	///投资者对冲设置查询
 	virtual int ReqQryOffsetSetting(CThostFtdcQryOffsetSettingField *pQryOffsetSetting, int nRequestID) = 0;
+
+	///申请短信验证码请求
+	virtual int ReqGenSMSCode(CThostFtdcReqGenSMSCodeField *pReqGenSMSCode, int nRequestID) = 0;
+
+	///套利确认请求
+	virtual int ReqSpdApply(CThostFtdcInputSpdApplyField *pInputSpdApply, int nRequestID) = 0;
+
+	///套利确认撤销请求
+	virtual int ReqSpdApplyAction(CThostFtdcInputSpdApplyActionField *pInputSpdApplyAction, int nRequestID) = 0;
+
+	///套利确认查询请求
+	virtual int ReqQrySpdApply(CThostFtdcQrySpdApplyField *pQrySpdApply, int nRequestID) = 0;
+
+	///套保确认请求
+	virtual int ReqHedgeCfm(CThostFtdcInputHedgeCfmField *pInputHedgeCfm, int nRequestID) = 0;
+
+	///套保确认撤销请求
+	virtual int ReqHedgeCfmAction(CThostFtdcInputHedgeCfmActionField *pInputHedgeCfmAction, int nRequestID) = 0;
+
+	///套保确认查询请求
+	virtual int ReqQryHedgeCfm(CThostFtdcQryHedgeCfmField *pQryHedgeCfm, int nRequestID) = 0;
 protected:
 	~CThostFtdcTraderApi(){};
 };
